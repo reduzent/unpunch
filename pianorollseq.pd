@@ -310,10 +310,10 @@ c;
 #N canvas 107 99 450 300 vertline-template 0;
 #X obj 18 20 drawpolygon c 1 0 0 0 h;
 #X obj 19 79 s \$0.vertline.send;
-#X obj 165 20 drawnumber -v nvis n -3 -15 c;
 #X obj 19 42 struct \$0.vertline float x float y float h float c float
 n float nvis;
-#X connect 3 0 1 0;
+#X obj 165 20 drawnumber -v nvis n -3 -12 c;
+#X connect 2 0 1 0;
 #X restore 754 446 pd vertline-template;
 #N canvas 43 99 400 432 create_vertline 0;
 #X obj 16 116 t a b;
@@ -739,16 +739,49 @@ id float gid float vel float c float vis;
 #X connect 7 0 4 1;
 #X connect 8 0 3 1;
 #X restore 392 160 pd create.dur.number;
-#N canvas 0 99 400 241 create.show.selector 0;
+#N canvas 0 99 397 449 create.show.selector 0;
 #X obj 7 7 inlet;
-#X obj 7 139 outlet;
-#X obj 7 78 list prepend \$0;
-#X msg 7 44 490 0 none \, 545 1 velocity \, 600 2 gid;
-#X msg 7 106 scalar \$1.show.selector \$2 20 555 \$3 \$4;
-#X connect 0 0 3 0;
-#X connect 2 0 4 0;
-#X connect 3 0 2 0;
-#X connect 4 0 1 0;
+#X obj 7 411 outlet;
+#X obj 7 350 list prepend \$0;
+#X msg 7 378 scalar \$1.show.selector \$2 20 555 \$3 \$4;
+#X msg 7 316 \$1 0 none \, \$2 1 velocity \, \$3 2 gid;
+#X obj 7 61 f;
+#X obj 7 84 + 400;
+#X text 46 84 offset from left border;
+#X msg 26 138 3;
+#X obj 26 161 until;
+#X obj 26 184 f;
+#X obj 26 209 t a a;
+#X obj 76 200 + 55;
+#X obj 26 232 list prepend;
+#X obj 26 255 t a a;
+#X obj 7 289 list append;
+#X obj 44 64 r \$0.canvasleftmargin;
+#X obj 7 30 b;
+#X obj 198 241 print YOYOYOOYOO;
+#X obj 7 111 t b b a b;
+#X connect 0 0 17 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X connect 4 0 2 0;
+#X connect 5 0 6 0;
+#X connect 6 0 19 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 13 0;
+#X connect 11 1 12 0;
+#X connect 12 0 10 1;
+#X connect 13 0 14 0;
+#X connect 14 0 15 1;
+#X connect 14 1 13 1;
+#X connect 15 0 4 0;
+#X connect 16 0 5 1;
+#X connect 17 0 5 0;
+#X connect 19 0 15 0;
+#X connect 19 1 8 0;
+#X connect 19 2 10 1;
+#X connect 19 3 13 1;
 #X restore 362 190 pd create.show.selector;
 #N canvas 0 99 450 300 gid.state 0;
 #X obj 12 76 route click;
@@ -1064,7 +1097,7 @@ float id symbol label;
 #X obj 581 524 s \$0.display;
 #X obj 704 164 r \$0.display;
 #X obj 704 247 s pd-\$0.display;
-#X obj 730 195 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 730 195 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg 730 215 vis \$1;
 #N canvas 179 380 927 595 note.create 0;
@@ -2057,12 +2090,6 @@ to the note (or prints a 'not found' error);
 #X connect 17 1 12 0;
 #X restore 43 356 pd note.change.gid;
 #X msg 283 358 note change gid 16 58 4;
-#X msg 437 61 \; \$1.stepcount 64 \; \$1.pitchrange 48 \; \$1.stepviswidth
-15 \; \$1.stepvisheight 14 \; \$1.canvastopmargin 60 \; \$1.canvasleftmargin
-90 \; \$1.stepkeycolor1 887 \; \$1.stepkeycolor2 777 \; \$1.griddivision
-4 \; \$1.gridsubdivision 4 \; \$1.gidcolorlist 800 840 80 88 8 808
-\; \$1.default.vel 64 \; \$1.default.gid 0 \; \$1.default.dur 4 \;
-\$1.default.show 0 \; \$1.init bang \;;
 #X obj 78 465 text define \$0.sequence;
 #N canvas 412 166 561 399 sequencer 0;
 #N canvas 0 289 404 347 note.create 0;
@@ -2385,9 +2412,15 @@ to the note (or prints a 'not found' error);
 #X connect 19 0 18 0;
 #X connect 21 0 17 0;
 #X restore 79 440 pd sequencer;
+#X msg 437 61 \; \$1.stepcount 64 \; \$1.pitchrange 48 \; \$1.stepviswidth
+15 \; \$1.stepvisheight 14 \; \$1.canvastopmargin 60 \; \$1.canvasleftmargin
+10 \; \$1.stepkeycolor1 887 \; \$1.stepkeycolor2 777 \; \$1.griddivision
+4 \; \$1.gridsubdivision 4 \; \$1.gidcolorlist 800 840 80 88 8 808
+\; \$1.default.vel 64 \; \$1.default.gid 0 \; \$1.default.dur 4 \;
+\$1.default.show 0 \; \$1.init bang \;;
 #X connect 0 0 24 0;
 #X connect 1 0 2 0;
-#X connect 2 0 49 0;
+#X connect 2 0 51 0;
 #X connect 3 0 20 0;
 #X connect 4 0 2 0;
 #X connect 5 0 24 0;
