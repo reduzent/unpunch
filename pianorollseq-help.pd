@@ -1,20 +1,20 @@
 #N canvas 3 101 704 440 10;
 #X obj 20 221 pianorollseq pd-My_Happy_Sequencer;
 #N canvas 708 99 1015 763 My_Happy_Sequencer 1;
-#X restore 262 221 pd My_Happy_Sequencer;
+#X restore 242 221 pd My_Happy_Sequencer;
 #X obj 539 102 s pd-My_Happy_Sequencer;
 #X msg 539 74 vis \$1;
 #X obj 539 47 tgl 20 0 empty empty empty 17 7 0 10 -204800 -1 -1 1
 1;
 #X text 570 47 show GUI;
-#X text 398 220 <- Container for the sequencer GUI;
-#X obj 19 346 spigot;
+#X text 378 220 <- Container for the sequencer GUI;
+#X obj 19 366 spigot;
 #X obj 20 181 r \$0.msgs;
 #X obj 20 268 s \$0.msgs;
-#X obj 19 319 r \$0.msgs;
-#X obj 80 349 tgl 20 0 empty empty empty 17 7 0 10 -204800 -1 -1 0
+#X obj 19 339 r \$0.msgs;
+#X obj 65 365 tgl 20 0 empty empty empty 17 7 0 10 -204800 -1 -1 0
 1;
-#X text 105 350 print editor messages;
+#X text 86 366 print editor messages;
 #X msg 625 73 clear;
 #X obj 539 21 loadbang;
 #X text 550 411 2018 \, Roman Haefeli;
@@ -39,14 +39,18 @@
 #X connect 8 0 3 0;
 #X restore 221 149 pd counter;
 #X obj 221 174 nbx 3 18 0 9999 0 0 empty empty empty 0 -8 0 10 -204786
--1 -1 57 256;
+-1 -1 38 256;
 #X obj 221 122 tgl 20 0 empty empty empty 17 7 0 10 -204786 -1 -1 0
 1;
 #X text 247 123 turn on/off clock;
-#X obj 19 375 print EDITOR;
-#X obj 221 384 print NOTES;
+#X obj 19 395 print EDITOR;
+#X obj 221 395 print NOTES;
+#X obj 221 366 spigot;
+#X obj 267 365 tgl 20 0 empty empty empty 17 7 0 10 -204800 -1 -1 0
+1;
+#X text 290 366 print notes;
 #X connect 0 0 9 0;
-#X connect 0 1 21 0;
+#X connect 0 1 22 0;
 #X connect 3 0 2 0;
 #X connect 4 0 3 0;
 #X connect 7 0 20 0;
@@ -58,3 +62,5 @@
 #X connect 16 0 17 0;
 #X connect 17 0 0 1;
 #X connect 18 0 16 0;
+#X connect 22 0 21 0;
+#X connect 23 0 22 1;
