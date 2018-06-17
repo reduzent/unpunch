@@ -1,5 +1,5 @@
 #N canvas 3 101 704 440 10;
-#X obj 20 221 pianorollseq pd-My_Happy_Sequencer;
+#X obj 20 221 unpunch pd-My_Happy_Sequencer;
 #N canvas 708 99 1015 763 My_Happy_Sequencer 1;
 #X restore 242 221 pd My_Happy_Sequencer;
 #X obj 539 102 s pd-My_Happy_Sequencer;
