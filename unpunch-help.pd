@@ -27,7 +27,7 @@
 #X msg 119 49 0;
 #X obj 21 160 outlet;
 #X obj 21 58 metro 150;
-#X obj 21 104 mod 64;
+#X obj 21 104 mod 16;
 #X connect 0 0 7 0;
 #X connect 1 0 8 0;
 #X connect 2 0 6 0;
@@ -40,7 +40,7 @@
 #X restore 221 149 pd counter;
 #X obj 221 174 nbx 3 18 0 9999 0 0 empty empty empty 0 -8 0 10 -204786
 -1 -1 0 256;
-#X obj 221 122 tgl 20 0 empty empty empty 17 7 0 10 -204786 -1 -1 0
+#X obj 221 122 tgl 20 0 empty empty empty 17 7 0 10 -204786 -1 -1 1
 1;
 #X text 247 123 turn on/off clock;
 #X obj 19 395 print EDITOR;
@@ -49,7 +49,7 @@
 #X obj 267 365 tgl 20 0 empty empty empty 17 7 0 10 -204800 -1 -1 0
 1;
 #X text 290 366 print notes;
-#N canvas 318 287 443 431 synth 0;
+#N canvas 318 287 538 414 synth 0;
 #N canvas 0 99 482 490 voice 0;
 #X obj 41 288 osc~ 440;
 #X obj 41 428 expr~ tanh($v1);
@@ -127,12 +127,12 @@
 #X obj 13 66 pack f f f;
 #X obj 13 169 +~;
 #X obj 33 220 hsl 100 15 0 1 0 0 \$0.bli \$0.bla empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 30 240 t a a;
-#X msg 30 286 \$1 50;
-#X obj 30 309 line~;
-#X obj 12 345 *~;
-#X obj 12 368 dac~ 1 2;
+-1 -1 3900 1;
+#X obj 58 248 t a a;
+#X msg 58 294 \$1 50;
+#X obj 58 317 line~;
+#X obj 8 346 *~;
+#X obj 7 387 dac~ 1 2;
 #N canvas 0 99 482 490 voice 0;
 #X obj 41 288 osc~ 440;
 #X obj 41 428 expr~ tanh($v1);
@@ -498,45 +498,44 @@
 #X connect 29 0 5 0;
 #X connect 30 0 5 0;
 #X restore 313 120 pd voice;
-#X obj 30 263 *;
-#X msg 101 14 stop;
-#X msg 143 21 clear;
+#X obj 58 271 *;
 #X obj 13 89 route 1 2 3 4 5 6, f 61;
 #X obj 13 43 poly 6 1, f 10;
 #X obj 135 220 tgl 15 0 \$0.bli \$0.bla empty 17 7 0 10 -262144 -1
--1 0 1;
+-1 1 1;
 #X msg 147 261 dsp \$1;
 #X obj 147 284 s pd;
+#X obj 52 348 *~;
 #X connect 0 0 3 0;
-#X connect 1 0 19 0;
-#X connect 2 0 18 0;
+#X connect 1 0 17 0;
+#X connect 2 0 16 0;
 #X connect 3 0 8 0;
+#X connect 3 0 21 0;
 #X connect 4 0 5 0;
 #X connect 5 0 15 0;
 #X connect 5 1 15 1;
 #X connect 6 0 7 0;
 #X connect 7 0 8 1;
+#X connect 7 0 21 1;
 #X connect 8 0 9 0;
-#X connect 8 0 9 1;
 #X connect 10 0 3 0;
 #X connect 11 0 3 0;
 #X connect 12 0 3 1;
 #X connect 13 0 3 1;
 #X connect 14 0 3 1;
 #X connect 15 0 6 0;
-#X connect 16 0 19 0;
-#X connect 17 0 19 0;
-#X connect 18 0 0 0;
-#X connect 18 1 10 0;
-#X connect 18 2 11 0;
-#X connect 18 3 12 0;
-#X connect 18 4 13 0;
-#X connect 18 5 14 0;
-#X connect 19 0 2 0;
-#X connect 19 1 2 1;
-#X connect 19 2 2 2;
-#X connect 20 0 21 0;
-#X connect 21 0 22 0;
+#X connect 16 0 0 0;
+#X connect 16 1 10 0;
+#X connect 16 2 11 0;
+#X connect 16 3 12 0;
+#X connect 16 4 13 0;
+#X connect 16 5 14 0;
+#X connect 17 0 2 0;
+#X connect 17 1 2 1;
+#X connect 17 2 2 2;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
+#X connect 21 0 9 1;
 #X coords 0 -1 1 1 120 35 1 30 200;
 #X restore 248 278 pd synth;
 #X connect 0 0 9 0;
