@@ -18,16 +18,23 @@
 #X msg 625 73 clear;
 #X obj 539 21 loadbang;
 #X text 550 411 2018 \, Roman Haefeli;
-#N canvas 0 99 378 198 counter 0;
+#N canvas 0 99 454 259 counter 0;
 #X obj 21 25 inlet;
 #X obj 21 81 f;
 #X obj 21 129 t a a;
-#X obj 69 97 + 1;
+#X obj 105 102 + 1;
 #X obj 119 26 inlet;
 #X msg 119 49 0;
 #X obj 21 160 outlet;
 #X obj 21 58 metro 150;
-#X obj 21 104 mod 16;
+#X obj 21 104 mod 128;
+#X obj 201 101 cnv 12 90 12 empty empty empty 20 12 0 14 -261682 -66577
+0;
+#X text 201 99 loop-length=;
+#X obj 275 100 nbx 3 14 1 999 0 0 empty empty empty 0 -8 0 10 -261682
+-1 -1 128 256;
+#X obj 275 28 loadbang;
+#X msg 275 51 64;
 #X connect 0 0 7 0;
 #X connect 1 0 8 0;
 #X connect 2 0 6 0;
@@ -37,10 +44,14 @@
 #X connect 5 0 1 1;
 #X connect 7 0 1 0;
 #X connect 8 0 2 0;
+#X connect 11 0 8 1;
+#X connect 12 0 13 0;
+#X connect 13 0 11 0;
+#X coords 0 -1 1 1 111 14 2 200 100;
 #X restore 221 149 pd counter;
 #X obj 221 174 nbx 3 18 0 9999 0 0 empty empty empty 0 -8 0 10 -204786
--1 -1 0 256;
-#X obj 221 122 tgl 20 0 empty empty empty 17 7 0 10 -204786 -1 -1 1
+-1 -1 15 256;
+#X obj 221 122 tgl 20 0 empty empty empty 17 7 0 10 -261682 -1 -1 0
 1;
 #X text 247 123 turn on/off clock;
 #X obj 19 395 print EDITOR;
@@ -127,7 +138,7 @@
 #X obj 13 66 pack f f f;
 #X obj 13 169 +~;
 #X obj 33 220 hsl 100 15 0 1 0 0 \$0.bli \$0.bla empty -2 -8 0 10 -262144
--1 -1 3900 1;
+-1 -1 0 1;
 #X obj 58 248 t a a;
 #X msg 58 294 \$1 50;
 #X obj 58 317 line~;
@@ -502,7 +513,7 @@
 #X obj 13 89 route 1 2 3 4 5 6, f 61;
 #X obj 13 43 poly 6 1, f 10;
 #X obj 135 220 tgl 15 0 \$0.bli \$0.bla empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 0 1;
 #X msg 147 261 dsp \$1;
 #X obj 147 284 s pd;
 #X obj 52 348 *~;
