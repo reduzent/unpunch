@@ -32,7 +32,7 @@
 0;
 #X text 201 99 loop-length=;
 #X obj 275 100 nbx 3 14 1 999 0 0 empty empty empty 0 -8 0 10 -261682
--1 -1 128 256;
+-1 -1 39 256;
 #X obj 275 28 loadbang;
 #X msg 275 51 64;
 #X connect 0 0 7 0;
@@ -50,8 +50,8 @@
 #X coords 0 -1 1 1 111 14 2 200 100;
 #X restore 221 149 pd counter;
 #X obj 221 174 nbx 3 18 0 9999 0 0 empty empty empty 0 -8 0 10 -204786
--1 -1 15 256;
-#X obj 221 122 tgl 20 0 empty empty empty 17 7 0 10 -261682 -1 -1 0
+-1 -1 34 256;
+#X obj 221 122 tgl 20 0 empty empty empty 17 7 0 10 -261682 -1 -1 1
 1;
 #X text 247 123 turn on/off clock;
 #X obj 19 395 print EDITOR;
@@ -137,8 +137,8 @@
 #X obj 13 18 inlet;
 #X obj 13 66 pack f f f;
 #X obj 13 169 +~;
-#X obj 33 220 hsl 100 15 0 1 0 0 \$0.bli \$0.bla empty -2 -8 0 10 -262144
--1 -1 0 1;
+#X obj 33 220 hsl 100 15 0 1 0 0 \$0.bli \$0.bla empty -2 -8 0 10 -261682
+-1 -1 8100 1;
 #X obj 58 248 t a a;
 #X msg 58 294 \$1 50;
 #X obj 58 317 line~;
@@ -512,8 +512,8 @@
 #X obj 58 271 *;
 #X obj 13 89 route 1 2 3 4 5 6, f 61;
 #X obj 13 43 poly 6 1, f 10;
-#X obj 135 220 tgl 15 0 \$0.bli \$0.bla empty 17 7 0 10 -262144 -1
--1 0 1;
+#X obj 135 220 tgl 15 0 \$0.bli \$0.bla empty 17 7 0 10 -261682 -1
+-1 1 1;
 #X msg 147 261 dsp \$1;
 #X obj 147 284 s pd;
 #X obj 52 348 *~;
