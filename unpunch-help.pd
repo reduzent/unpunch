@@ -645,7 +645,6 @@ at 0) [implies a redraw of display];
 #X restore 20 99 pd interface.configuration;
 #X obj 2 2 cnv 15 700 24 empty empty empty 20 12 0 14 -233017 -66577
 0;
-#X text 12 5 unpuch - a configurable matrix sequencer;
 #X obj 17 238 cnv 15 360 24 empty empty empty 20 12 0 14 -233017 -66577
 0;
 #X obj 20 241 unpunch pd-My_Happy_Sequencer;
@@ -727,19 +726,20 @@ can be dumped for later restoration and it integrates well in existing
 state saving systems. It is designed for real-time synchronisation
 (if needed) and can also be used in systems like netpd.;
 #X restore 20 39 pd about;
+#X text 12 5 unpunch - a configurable matrix sequencer;
 #X connect 1 0 0 0;
 #X connect 2 0 1 0;
 #X connect 5 0 14 0;
 #X connect 6 0 5 1;
 #X connect 8 0 2 0;
 #X connect 10 0 11 0;
-#X connect 11 0 35 1;
+#X connect 11 0 34 1;
 #X connect 12 0 10 0;
 #X connect 16 0 15 0;
 #X connect 17 0 16 1;
 #X connect 21 0 5 0;
-#X connect 22 0 35 0;
-#X connect 23 0 35 0;
-#X connect 35 0 20 0;
-#X connect 35 1 16 0;
-#X connect 35 1 19 0;
+#X connect 22 0 34 0;
+#X connect 23 0 34 0;
+#X connect 34 0 20 0;
+#X connect 34 1 16 0;
+#X connect 34 1 19 0;
