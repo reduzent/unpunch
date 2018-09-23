@@ -1,18 +1,14 @@
 #N canvas 3 101 705 445 10;
-#X obj 20 221 unpunch pd-My_Happy_Sequencer;
-#N canvas 709 99 1051 742 My_Happy_Sequencer 1;
-#X restore 242 221 pd My_Happy_Sequencer;
 #X obj 539 132 s pd-My_Happy_Sequencer;
 #X msg 539 104 vis \$1;
 #X obj 539 77 tgl 20 0 empty empty empty 17 7 0 10 -204800 -1 -1 1
 1;
 #X text 570 77 show GUI;
-#X text 378 220 <- Container for the sequencer GUI;
+#X text 378 240 <- Container for the sequencer GUI;
 #X obj 19 366 spigot;
 #X obj 65 365 tgl 20 0 empty empty empty 17 7 0 10 -204800 -1 -1 0
 1;
 #X text 86 366 print editor messages;
-#X msg 625 103 clear;
 #X obj 539 51 loadbang;
 #X text 550 411 2018 \, Roman Haefeli;
 #N canvas 0 99 454 259 counter 0;
@@ -29,7 +25,7 @@
 0;
 #X text 201 99 loop-length=;
 #X obj 275 100 nbx 3 14 1 999 0 0 empty empty empty 0 -8 0 10 -261682
--1 -1 32 256;
+-1 -1 64 256;
 #X obj 275 28 loadbang;
 #X msg 275 51 64;
 #X connect 0 0 7 0;
@@ -45,12 +41,12 @@
 #X connect 12 0 13 0;
 #X connect 13 0 11 0;
 #X coords 0 -1 1 1 111 14 2 200 100;
-#X restore 221 149 pd counter;
-#X obj 221 174 nbx 3 18 0 9999 0 0 empty empty empty 0 -8 0 10 -204786
--1 -1 22 256;
-#X obj 221 92 tgl 20 0 empty empty empty 17 7 0 10 -261682 -1 -1 0
+#X restore 191 184 pd counter;
+#X obj 191 209 nbx 3 18 0 9999 0 0 empty empty empty 0 -8 0 10 -204786
+-1 -1 0 256;
+#X obj 191 147 tgl 20 0 empty empty empty 17 7 0 10 -261682 -1 -1 0
 1;
-#X text 247 93 turn on/off clock;
+#X text 216 148 turn on/off clock;
 #X obj 19 395 print EDITOR;
 #X obj 221 395 print NOTES;
 #X obj 221 366 spigot;
@@ -135,7 +131,7 @@
 #X obj 13 66 pack f f f;
 #X obj 13 169 +~;
 #X obj 33 220 hsl 100 15 0 1 0 0 \$0.bli \$0.bla empty -2 -8 0 10 -261682
--1 -1 6800 1;
+-1 -1 0 1;
 #X obj 58 248 t a a;
 #X msg 58 294 \$1 50;
 #X obj 58 317 line~;
@@ -510,7 +506,7 @@
 #X obj 13 89 route 1 2 3 4 5 6, f 61;
 #X obj 13 43 poly 6 1, f 10;
 #X obj 135 220 tgl 15 0 \$0.bli \$0.bla empty 17 7 0 10 -261682 -1
--1 1 1;
+-1 0 1;
 #X msg 147 261 dsp \$1;
 #X obj 147 284 s pd;
 #X obj 52 348 *~;
@@ -545,12 +541,12 @@
 #X connect 19 0 20 0;
 #X connect 21 0 9 1;
 #X coords 0 -1 1 1 120 35 1 30 200;
-#X restore 248 278 pd synth;
-#X obj 20 268 s \$0.from;
+#X restore 248 298 pd synth;
+#X obj 20 288 s \$0.from;
 #X obj 19 339 r \$0.from;
-#X obj 20 181 r \$0.to;
-#X obj 71 181 r \$0.from;
-#N canvas 170 116 645 348 note.manipulation 0;
+#X obj 20 201 r \$0.to;
+#X obj 71 201 r \$0.from;
+#N canvas 170 116 645 392 note.manipulation 0;
 #X obj 18 190 s \$0.to;
 #X msg 78 38 note create 4 65 80 12 0;
 #X text 77 14 NOTE MANIPULATION;
@@ -566,13 +562,13 @@
 #X text 279 128 change a note's group [step \, pitch \, gid];
 #X text 279 158 delete a note [step \, pitch];
 #X msg 78 158 note delete 4 65;
-#X text 42 228 step: denotes the temporal position of the note (0 -
+#X text 82 228 step: denotes the temporal position of the note (0 -
 inf);
-#X text 42 248 pitch: refers to the MIDI pitch (0 - 127);
-#X text 42 268 duration: period between note-on and note-off (1 - inf)
+#X text 82 248 pitch: refers to the MIDI pitch (0 - 127);
+#X text 82 268 duration: period between note-on and note-off (1 - inf)
 ;
-#X text 42 288 velocity: (1 -127) for note-on \, 0 for note-off;
-#X text 42 308 gid: group id relevant for editing (0 -5);
+#X text 82 288 velocity: (1 -127) for note-on \, 0 for note-off;
+#X text 82 308 gid: group id relevant for editing (0 -5);
 #X connect 1 0 0 0;
 #X connect 3 0 0 0;
 #X connect 4 0 0 0;
@@ -602,7 +598,7 @@ can be dumped for later restoration and it integrates well in existing
 state saving systems. It is designed for real-time synchronisation
 (if needed) and can also be used in systems like netpd.;
 #X restore 20 39 pd README;
-#N canvas 170 115 430 439 manual 0;
+#N canvas 141 99 404 505 manual 0;
 #X text 15 11 Display;
 #X text 15 21 -------;
 #X text 15 121 Clock;
@@ -628,12 +624,16 @@ which property is displayed numerically on each note. Changig the numbers
 is an alternative way to edit notes. The grey bar above each default
 value can be toggled between red and grey. If red \, the default value
 is applied immediately when clicking a note.;
+#X text 14 430 NOTE: In order to allow real-time state synchronisation
+\, manual edits only trigger messages to the left outlet \, but do
+not actually perform the actions. For the messages to have an effect
+\, loop back left outlet to left inlet.;
 #X restore 20 69 pd manual;
-#X text 404 254 arg1: name of canvas to draw interface;
-#X text 391 284 inlet0: editor commands and configuration;
-#X text 391 304 inlet1: sequencer input (clock);
-#X text 386 334 outlet0: generated edit commands (mouse actions);
-#X text 386 354 outlet1: notes ([pitch \, velocity] tuples);
+#X text 404 274 arg1: name of canvas to draw interface;
+#X text 391 304 inlet0: editor commands and configuration;
+#X text 391 324 inlet1: sequencer input (clock);
+#X text 386 354 outlet0: generated edit commands (mouse actions);
+#X text 386 374 outlet1: notes ([pitch \, velocity] tuples);
 #N canvas 170 115 628 440 interface.configuration 0;
 #X msg 78 229 redraw;
 #X obj 18 300 s \$0.to;
@@ -669,9 +669,29 @@ at 0) [implies a redraw of display];
 #X obj 2 2 cnv 15 700 24 empty empty empty 20 12 0 14 -233017 -66577
 0;
 #X text 12 5 unpuch - a configurable matrix sequencer;
-#N canvas 0 99 530 492 restore 0;
-#X obj 143 468 s \$0.to;
-#X msg 95 69 clear \, set stepviswidth 15 \, set stepvisheight 14 \,
+#X obj 17 238 cnv 15 360 24 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 20 241 unpunch pd-My_Happy_Sequencer;
+#N canvas 709 99 1006 749 My_Happy_Sequencer 1;
+#X restore 242 241 pd My_Happy_Sequencer;
+#N canvas 170 116 568 256 misc 0;
+#X obj 18 130 s \$0.to;
+#X text 77 14 MISC METHODS;
+#X msg 78 38 clear \, redraw;
+#X text 179 38 clear all notes ('clear' alone only deletes all notes
+internally without updating visual representation);
+#X msg 78 78 dump;
+#X text 179 78 dump complete state as a set of messages. If the set
+of messages is later sent back to [unpunch] in the same order \, the
+complete state can be restored;
+#X connect 2 0 0 0;
+#X connect 4 0 0 0;
+#X restore 20 159 pd misc;
+#N canvas 0 99 467 139 example-song 0;
+#X obj 19 79 s \$0.to;
+#N canvas 0 99 420 479 song-data-in-a-messagebox 0;
+#X obj 16 22 inlet;
+#X msg 16 52 clear \, set stepviswidth 15 \, set stepvisheight 14 \,
 set stepsperpage 64 \, set pitchrange 48 \, set gridsubdivision 4 \,
 set griddivision 4 \, page 1 \, note create 0 46 64 2 0 \, note create
 3 53 64 1 0 \, note create 4 53 64 2 0 \, note create 7 46 64 1 0 \,
@@ -697,22 +717,29 @@ note create 11 66 64 2 0 \, note create 14 66 64 1 0 \, note create
 16 66 64 1 0 \, note create 21 66 64 1 0 \, note create 23 65 64 1
 0 \, note create 25 65 64 1 0 \, note create 27 65 64 2 0 \, note create
 30 65 64 1 0 \, note create 30 63 64 1 0 \,;
+#X obj 16 426 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore 19 42 pd song-data-in-a-messagebox;
+#X obj 19 14 bng 20 250 50 0 empty empty empty 17 7 0 10 -204786 -1
+-1;
+#X text 42 15 load song;
 #X connect 1 0 0 0;
-#X restore 356 54 pd restore;
-#X connect 0 0 23 0;
-#X connect 0 1 19 0;
-#X connect 0 1 22 0;
-#X connect 3 0 2 0;
-#X connect 4 0 3 0;
-#X connect 7 0 17 0;
-#X connect 8 0 7 1;
-#X connect 10 0 2 0;
-#X connect 11 0 4 0;
-#X connect 13 0 14 0;
-#X connect 14 0 0 1;
-#X connect 15 0 13 0;
-#X connect 19 0 18 0;
-#X connect 20 0 19 1;
-#X connect 24 0 7 0;
-#X connect 25 0 0 0;
-#X connect 26 0 0 0;
+#X connect 2 0 1 0;
+#X restore 222 56 pd example-song;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 5 0 14 0;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 10 0 11 0;
+#X connect 11 0 36 1;
+#X connect 12 0 10 0;
+#X connect 16 0 15 0;
+#X connect 17 0 16 1;
+#X connect 21 0 5 0;
+#X connect 22 0 36 0;
+#X connect 23 0 36 0;
+#X connect 36 0 20 0;
+#X connect 36 1 16 0;
+#X connect 36 1 19 0;
