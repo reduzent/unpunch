@@ -131,7 +131,7 @@
 #X obj 13 66 pack f f f;
 #X obj 13 169 +~;
 #X obj 33 220 hsl 100 15 0 1 0 0 \$0.bli \$0.bla empty -2 -8 0 10 -261682
--1 -1 0 1;
+-1 -1 2300 1;
 #X obj 58 248 t a a;
 #X msg 58 294 \$1 50;
 #X obj 58 317 line~;
@@ -575,29 +575,6 @@ inf);
 #X connect 5 0 0 0;
 #X connect 11 0 0 0;
 #X restore 20 129 pd note.manipulation;
-#N canvas 169 115 431 426 README 0;
-#X text 17 15 unpunch - a configurable matrix sequencer;
-#X text 17 31 -----------------------------------------;
-#X text 18 224 The way it uses Pd's data structures comes with a few
-quirks and not all graphic scalars are protected from accidental movement.
-However \, the correct view can be restored at any time.;
-#X text 18 288 The sequencer doesn't run its own clock \, but is meant
-to be driven by an external clock in order to integrate it more easily
-in already existing systems with their own master clock. This help
-contains an example for a very simple clock.;
-#X text 18 364 Report any bugs and feature request to the respective
-github project.;
-#X text 17 55 [unpunch] is a sequencer that allows to graphically edit
-MIDI-like scores on a timeline \, a.k.a piano roll sequencer. Notes
-can be created and deletec \, velocity and duration can be changed
-with mouse actions. Additionally \, notes can be organized in groups
-and operations like cloning \, pitch- or time-shifting can be applied
-to groups. [unpunch] has a configurable interface to make it suitable
-for various time signatures and display resolutions. The complete state
-can be dumped for later restoration and it integrates well in existing
-state saving systems. It is designed for real-time synchronisation
-(if needed) and can also be used in systems like netpd.;
-#X restore 20 39 pd README;
 #N canvas 141 99 404 505 manual 0;
 #X text 15 11 Display;
 #X text 15 21 -------;
@@ -625,7 +602,7 @@ is an alternative way to edit notes. The grey bar above each default
 value can be toggled between red and grey. If red \, the default value
 is applied immediately when clicking a note.;
 #X text 14 430 NOTE: In order to allow real-time state synchronisation
-\, manual edits only trigger messages to the left outlet \, but do
+\, manual edits only generate messages to the left outlet \, but do
 not actually perform the actions. For the messages to have an effect
 \, loop back left outlet to left inlet.;
 #X restore 20 69 pd manual;
@@ -687,7 +664,7 @@ complete state can be restored;
 #X connect 2 0 0 0;
 #X connect 4 0 0 0;
 #X restore 20 159 pd misc;
-#N canvas 0 99 467 139 example-song 0;
+#N canvas 0 99 467 139 example.song 0;
 #X obj 19 79 s \$0.to;
 #N canvas 0 99 420 479 song-data-in-a-messagebox 0;
 #X obj 16 22 inlet;
@@ -726,20 +703,43 @@ note create 11 66 64 2 0 \, note create 14 66 64 1 0 \, note create
 #X text 42 15 load song;
 #X connect 1 0 0 0;
 #X connect 2 0 1 0;
-#X restore 222 56 pd example-song;
+#X restore 222 56 pd example.song;
+#N canvas 169 115 431 426 about 0;
+#X text 17 15 unpunch - a configurable matrix sequencer;
+#X text 17 31 -----------------------------------------;
+#X text 18 224 The way it uses Pd's data structures comes with a few
+quirks and not all graphic scalars are protected from accidental movement.
+However \, the correct view can be restored at any time.;
+#X text 18 288 The sequencer doesn't run its own clock \, but is meant
+to be driven by an external clock in order to integrate it more easily
+in already existing systems with their own master clock. This help
+contains an example for a very simple clock.;
+#X text 18 364 Report any bugs and feature request to the respective
+github project.;
+#X text 17 55 [unpunch] is a sequencer that allows to graphically edit
+MIDI-like scores on a timeline \, a.k.a piano roll sequencer. Notes
+can be created and deletec \, velocity and duration can be changed
+with mouse actions. Additionally \, notes can be organized in groups
+and operations like cloning \, pitch- or time-shifting can be applied
+to groups. [unpunch] has a configurable interface to make it suitable
+for various time signatures and display resolutions. The complete state
+can be dumped for later restoration and it integrates well in existing
+state saving systems. It is designed for real-time synchronisation
+(if needed) and can also be used in systems like netpd.;
+#X restore 20 39 pd about;
 #X connect 1 0 0 0;
 #X connect 2 0 1 0;
 #X connect 5 0 14 0;
 #X connect 6 0 5 1;
 #X connect 8 0 2 0;
 #X connect 10 0 11 0;
-#X connect 11 0 36 1;
+#X connect 11 0 35 1;
 #X connect 12 0 10 0;
 #X connect 16 0 15 0;
 #X connect 17 0 16 1;
 #X connect 21 0 5 0;
-#X connect 22 0 36 0;
-#X connect 23 0 36 0;
-#X connect 36 0 20 0;
-#X connect 36 1 16 0;
-#X connect 36 1 19 0;
+#X connect 22 0 35 0;
+#X connect 23 0 35 0;
+#X connect 35 0 20 0;
+#X connect 35 1 16 0;
+#X connect 35 1 19 0;
