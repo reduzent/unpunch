@@ -6,7 +6,7 @@
 #X text 570 77 show GUI;
 #X text 378 240 <- Container for the sequencer GUI;
 #X obj 19 366 spigot;
-#X obj 65 365 tgl 20 0 empty empty empty 17 7 0 10 -204800 -1 -1 1
+#X obj 65 365 tgl 20 0 empty empty empty 17 7 0 10 -204800 -1 -1 0
 1;
 #X text 86 366 print editor messages;
 #X obj 539 51 loadbang;
@@ -664,39 +664,41 @@ complete state can be restored;
 #X restore 20 159 pd misc;
 #N canvas 0 99 467 139 example.song 0;
 #X obj 19 79 s \$0.to;
-#N canvas 0 99 420 479 song-data-in-a-messagebox 0;
+#N canvas 0 99 425 535 song-data-in-a-messagebox 0;
 #X obj 16 22 inlet;
-#X msg 16 52 clear \, set stepviswidth 15 \, set stepvisheight 14 \,
+#X obj 16 482 outlet;
+#X msg 16 48 clear \, set stepviswidth 15 \, set stepvisheight 14 \,
 set stepsperpage 64 \, set pitchrange 48 \, set gridsubdivision 4 \,
-set griddivision 4 \, page 1 \, note create 0 46 64 2 0 \, note create
-3 53 64 1 0 \, note create 4 53 64 2 0 \, note create 7 46 64 1 0 \,
-note create 8 47 64 2 0 \, note create 11 54 64 1 0 \, note create
-12 54 64 2 0 \, note create 15 47 64 1 0 \, note create 16 44 64 2
-0 \, note create 19 51 65 1 0 \, note create 20 51 64 2 0 \, note create
-23 44 64 1 0 \, note create 24 49 64 2 0 \, note create 27 56 64 1
-0 \, note create 28 56 64 2 0 \, note create 31 49 64 1 0 \, note create
-0 68 64 1 0 \, note create 2 68 64 1 0 \, note create 5 68 64 1 0 \,
-note create 7 70 64 1 0 \, note create 9 70 64 1 0 \, note create 11
-70 64 2 0 \, note create 14 70 64 1 0 \, note create 16 70 64 1 0 \,
-note create 18 70 64 1 0 \, note create 21 70 64 1 0 \, note create
-23 68 64 1 0 \, note create 25 68 61 1 0 \, note create 27 68 64 2
-0 \, note create 30 68 64 1 0 \, note create 0 61 64 1 0 \, note create
-2 61 64 1 0 \, note create 5 61 64 1 0 \, note create 7 63 64 1 0 \,
-note create 9 63 64 1 0 \, note create 11 63 64 2 0 \, note create
-14 63 64 1 0 \, note create 16 63 64 1 0 \, note create 18 63 64 1
-0 \, note create 21 63 64 1 0 \, note create 23 63 64 1 0 \, note create
-25 63 64 1 0 \, note create 27 63 64 2 0 \, note create 18 66 64 1
-0 \, note create 0 65 64 1 0 \, note create 2 65 64 1 0 \, note create
-5 65 64 1 0 \, note create 9 66 64 1 0 \, note create 7 66 64 1 0 \,
-note create 11 66 64 2 0 \, note create 14 66 64 1 0 \, note create
-16 66 64 1 0 \, note create 21 66 64 1 0 \, note create 23 65 64 1
-0 \, note create 25 65 64 1 0 \, note create 27 65 64 2 0 \, note create
-30 65 64 1 0 \, note create 30 63 64 1 0 \,;
-#X obj 16 426 outlet;
-#X msg 150 442 clear;
-#X connect 0 0 1 0;
-#X connect 1 0 2 0;
-#X connect 3 0 2 0;
+set griddivision 4 \, note restore 0 0 46 64 2 0 \, note restore 1
+3 53 64 1 0 \, note restore 2 4 53 64 2 0 \, note restore 3 7 46 64
+1 0 \, note restore 4 8 47 64 2 0 \, note restore 5 11 54 64 1 0 \,
+note restore 6 12 54 64 2 0 \, note restore 7 15 47 64 1 0 \, note
+restore 8 16 44 64 2 0 \, note restore 9 19 51 65 1 0 \, note restore
+10 20 51 64 2 0 \, note restore 11 23 44 64 1 0 \, note restore 12
+24 49 64 2 0 \, note restore 13 27 56 64 1 0 \, note restore 14 28
+56 64 2 0 \, note restore 15 31 49 64 1 0 \, note restore 16 0 68 64
+1 0 \, note restore 17 2 68 64 1 0 \, note restore 18 5 68 64 1 0 \,
+note restore 19 7 70 64 1 0 \, note restore 20 9 70 64 1 0 \, note
+restore 21 11 70 64 2 0 \, note restore 22 14 70 64 1 0 \, note restore
+23 16 70 64 1 0 \, note restore 24 18 70 64 1 0 \, note restore 25
+21 70 64 1 0 \, note restore 26 23 68 64 1 0 \, note restore 27 25
+68 61 1 0 \, note restore 28 27 68 64 2 0 \, note restore 29 30 68
+64 1 0 \, note restore 30 0 61 64 1 0 \, note restore 31 2 61 64 1
+0 \, note restore 32 5 61 64 1 0 \, note restore 33 7 63 64 1 0 \,
+note restore 34 9 63 64 1 0 \, note restore 35 11 63 64 2 0 \, note
+restore 36 14 63 64 1 0 \, note restore 37 16 63 64 1 0 \, note restore
+38 18 63 64 1 0 \, note restore 39 21 63 64 1 0 \, note restore 40
+23 63 64 1 0 \, note restore 41 25 63 64 1 0 \, note restore 42 27
+63 64 2 0 \, note restore 43 18 66 64 1 0 \, note restore 44 0 65 64
+1 0 \, note restore 45 2 65 64 1 0 \, note restore 46 5 65 64 1 0 \,
+note restore 47 9 66 64 1 0 \, note restore 48 7 66 64 1 0 \, note
+restore 49 11 66 64 2 0 \, note restore 50 14 66 64 1 0 \, note restore
+51 16 66 64 1 0 \, note restore 52 21 66 64 1 0 \, note restore 53
+23 65 64 1 0 \, note restore 54 25 65 64 1 0 \, note restore 55 27
+65 64 2 0 \, note restore 56 30 65 64 1 0 \, note restore 57 30 63
+64 1 0 \, page 1 \,;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
 #X restore 19 42 pd song-data-in-a-messagebox;
 #X obj 19 14 bng 20 250 50 0 empty empty empty 17 7 0 10 -204786 -1
 -1;
