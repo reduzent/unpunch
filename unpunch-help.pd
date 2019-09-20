@@ -773,14 +773,12 @@ inf);
 #X connect 5 0 0 0;
 #X connect 11 0 0 0;
 #X restore 20 129 pd note.manipulation;
-#N canvas 141 99 404 505 manual 0;
+#N canvas 141 99 986 324 manual 0;
 #X text 15 11 Display;
 #X text 15 21 -------;
-#X text 15 121 Clock;
-#X text 15 131 -----;
-#X text 15 251 Editing;
-#X text 15 261 -------;
-#X text 14 150 For most flexible use \, [unpunch] doesn't have an internal
+#X text 15 161 Clock;
+#X text 15 171 -----;
+#X text 14 190 For most flexible use \, [unpunch] doesn't have an internal
 clock \, but is driven by an external clock sent to its right inlet.
 The most simple clock is a counter counting upwards in regular intervals.
 Loops are played by inserting a modulo into the counter. Note that
@@ -790,26 +788,21 @@ to avoid hanging notes.;
 name is specified as first argument to [unpunch] and which can be an
 another patch \, abstraction \, or subpatch. In any case \, the canvas
 should be empty as it will be cleared during redraws.;
-#X text 14 280 Notes are created by clicking on the grid and are deleted
-by double-clicking them. The values in the top section define the default
-properties for newly created notes and include duration \, velocity
-and gid (group id). The duration of notes is changed by dragging the
-right end of a note horizontally. The grey switch on the right selects
-which property is displayed numerically on each note. Changig the numbers
-is an alternative way to edit notes. The grey bar above each default
-value can be toggled between red and grey. If red \, the default value
-is applied immediately when clicking a note.;
-#X text 14 430 NOTE: In order to allow real-time state synchronisation
-\, manual edits only generate messages to the left outlet \, but do
-not actually perform the actions. For the messages to have an effect
-\, loop back left outlet to left inlet.;
+#X text 15 107 The visual representation and the internal state are
+decoupled \, so representation can be changed while keeping existing
+notes intact.;
+#X text 419 13 Note creation and deletion;
+#X text 420 24 --------------------------;
+#X text 420 39 Notes are created by clickingon any empty field with
+defaults as configured in the upper section. Notes are deleted either
+by double-clicking them or by Ctrl_L-click.;
 #X restore 20 69 pd manual;
 #X text 404 274 arg1: name of canvas to draw interface;
 #X text 391 304 inlet0: editor commands and configuration;
 #X text 391 324 inlet1: sequencer input (clock);
 #X text 386 354 outlet0: generated edit commands (mouse actions);
 #X text 386 374 outlet1: notes ([pitch \, velocity] tuples);
-#N canvas 170 115 628 440 interface.configuration 0;
+#N canvas 169 115 628 440 interface.configuration 0;
 #X msg 78 229 redraw;
 #X obj 18 300 s \$0.to;
 #X text 229 79 set step height (pixel;
@@ -827,17 +820,17 @@ at 0) [implies a redraw of display];
 #X msg 78 259 page 3;
 #X msg 78 109 set stepsperpage 64;
 #X msg 78 139 set pitchrange 48;
-#X msg 78 49 set stepviswidth 15;
-#X msg 78 79 set stepvisheight 14;
 #X text 78 21 INTERFACE CONFIGURATION;
-#X msg 78 169 set griddivision 4;
-#X msg 78 199 set gridsubdivision 4;
+#X msg 78 169 set griddivision 5;
+#X msg 78 199 set gridsubdivision 6;
+#X msg 78 79 set stepvisheight 12;
+#X msg 78 49 set stepviswidth 9;
 #X connect 0 0 1 0;
 #X connect 10 0 1 0;
 #X connect 11 0 1 0;
 #X connect 12 0 1 0;
-#X connect 13 0 1 0;
 #X connect 14 0 1 0;
+#X connect 15 0 1 0;
 #X connect 16 0 1 0;
 #X connect 17 0 1 0;
 #X restore 20 99 pd interface.configuration;
@@ -846,7 +839,7 @@ at 0) [implies a redraw of display];
 #X obj 17 238 cnv 15 360 24 empty empty empty 20 12 0 14 -233017 -66577
 0;
 #X obj 20 241 unpunch pd-My_Happy_Sequencer;
-#N canvas 709 99 1006 749 My_Happy_Sequencer 1;
+#N canvas 711 99 1006 749 My_Happy_Sequencer 1;
 #X restore 242 241 pd My_Happy_Sequencer;
 #N canvas 170 116 568 256 misc 0;
 #X obj 18 130 s \$0.to;
@@ -943,28 +936,18 @@ restore 136 37 82 58 2 4 \, note restore 137 39 75 58 5 4 \, note restore
 #X connect 1 0 0 0;
 #X connect 2 0 1 0;
 #X restore 222 56 pd example.song;
-#N canvas 169 115 431 426 about 0;
+#N canvas 169 115 431 217 about 0;
 #X text 17 15 unpunch - a configurable matrix sequencer;
 #X text 17 31 -----------------------------------------;
-#X text 18 224 The way it uses Pd's data structures comes with a few
-quirks and not all graphic scalars are protected from accidental movement.
-However \, the correct view can be restored at any time.;
-#X text 18 288 The sequencer doesn't run its own clock \, but is meant
-to be driven by an external clock in order to integrate it more easily
-in already existing systems with their own master clock. This help
-contains an example for a very simple clock.;
-#X text 18 364 Report any bugs and feature request to the respective
-github project.;
 #X text 17 55 [unpunch] is a sequencer that allows to graphically edit
 MIDI-like scores on a timeline \, a.k.a piano roll sequencer. Notes
-can be created and deletec \, velocity and duration can be changed
-with mouse actions. Additionally \, notes can be organized in groups
-and operations like cloning \, pitch- or time-shifting can be applied
-to groups. [unpunch] has a configurable interface to make it suitable
-for various time signatures and display resolutions. The complete state
-can be dumped for later restoration and it integrates well in existing
-state saving systems. It is designed for real-time synchronisation
-(if needed) and can also be used in systems like netpd.;
+can be created and deleted \, velocity and duration can be changed
+with mouse actions. Some actions are triggered by key commands. [unpunch]
+has a configurable interface to make it suitable for various time signatures
+and display resolutions. The complete state can be dumped for later
+restoration and it integrates well in existing state saving systems.
+It is designed for real-time synchronisation (if needed) and can also
+be used in systems like netpd.;
 #X restore 20 39 pd about;
 #X text 12 5 unpunch - a configurable matrix sequencer;
 #X text 550 411 2019 \, Roman Haefeli;
