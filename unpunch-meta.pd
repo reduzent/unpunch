@@ -1,0 +1,8 @@
+#N canvas 116 99 420 81 10;
+#N canvas 498 265 345 132 META 0;
+#X text 10 70 LICENSE GPL-2;
+#X text 10 10 NAME unpunch;
+#X text 10 30 VERSION 1;
+#X text 10 50 AUTHOR Roman Haefeli;
+#X text 10 90 DESCRIPTION a configurable matrix sequencer for Pd;
+#X restore 23 27 pd META;
