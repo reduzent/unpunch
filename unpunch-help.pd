@@ -161,7 +161,7 @@
 #X obj 13 18 inlet;
 #X obj 13 66 pack f f f;
 #X obj 33 220 hsl 100 15 0 1 0 0 \$0.bli \$0.bla empty -2 -8 0 10 -261682
--1 -1 5200 1;
+-1 -1 0 1;
 #X obj 58 248 t a a;
 #X msg 58 294 \$1 50;
 #X obj 58 317 line~;
@@ -948,6 +948,7 @@ be used in systems like netpd.;
 #X restore 20 39 pd about;
 #X text 12 5 unpunch - a configurable matrix sequencer;
 #X text 575 413 2019 \, Roman Haefeli;
+#X msg 69 234 mute;
 #X connect 1 0 0 0;
 #X connect 2 0 1 0;
 #X connect 5 0 13 0;
@@ -962,3 +963,4 @@ be used in systems like netpd.;
 #X connect 30 0 15 0;
 #X connect 30 0 18 0;
 #X connect 30 1 5 0;
+#X connect 37 0 30 0;
