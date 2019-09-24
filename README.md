@@ -27,6 +27,7 @@ the horizontal axis representing the time.
 
 Please check LICENSE.txt
 
+---
 
 ![unpunch screenshot](unpunch.png)
 
